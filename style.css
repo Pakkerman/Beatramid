@@ -1,0 +1,76 @@
+:root {
+  --clr-bg: #222831;
+  --clr-1: #393e46;
+  --clr-2: #00adb5;
+  --clr-3: #eeeeee;
+}
+
+html {
+  background-color: var(--clr-bg);
+  font-family: tahoma;
+}
+
+h1,
+h3 {
+  color: var(--clr-2);
+  text-align: center;
+}
+
+.beat-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.beat-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.beat-ctrl {
+  /* margin: 0 auto; */
+  width: 25px;
+  height: 25px;
+  border: 3px solid var(--clr-3);
+  border-radius: 50%;
+}
+[data-appearance="idle"] {
+}
+[data-appearance="active"] {
+  background-color: #eeeeee;
+}
+[data-appearance="mute"] {
+  opacity: 50%;
+}
+[data-status="mute"] {
+  opacity: 50%;
+}
+
+.play-button {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tap-area {
+  margin: 2rem auto;
+  width: 200px;
+  height: 150px;
+  text-align: center;
+  background-color: var(--clr-1);
+
+  transition: 50ms;
+  box-shadow: 0rem 0rem 0.5rem #000000aa;
+  border-radius: 20px;
+}
+.tap-area:active {
+  background-color: var(--clr-2);
+  box-shadow: inset -0rem -0rem 0.5rem #000000;
+}
