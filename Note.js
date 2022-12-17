@@ -24,32 +24,39 @@ export default class Note {
   constructor(noteType, BPM) {
     this.type = noteType
     this.BPM = BPM
+    this.beatLengthMs = (60 / this.BPM) * 1000
     this.timeDivision = NOTE_TYPE[noteType]
     this.intervalID
-    this.element = document.querySelectorAll(`.${noteType}`)
+    this.timeoutId
+    this.elements = document.querySelectorAll(`.${noteType}`)
+    this.cycle = 0
   }
 
   startNote() {
     //issue: after pressing play it will delay 1 BPM before start playing
+    this.stopNote()
     this.playNote()
-    intervalID = setTimeout(() => {
-      this.startNote()
-    }, 1000)
-    // this.intervalID = setInterval(() => {}, (60 / this.BPM) * 1000)
+
+    this.intervalID = setInterval(() => {
+      this.playNote()
+      this.cycle += 1
+    }, this.beatLengthMs)
   }
 
   playNote() {
     const noteTiming = this.getNoteTimeArray(this.timeDivision)
-    this.element.forEach((item, index) => {
-      setTimeout(() => {
+    this.elements.forEach((item, index) => {
+      this.timeoutId = setTimeout(() => {
         if (item.dataset.status === "active") {
           this.noteFlash(item)
-          // this.playSound()
+          // console.log(noteTiming[index])
         }
+        if (this.cycle > 0) this.playSound()
       }, noteTiming[index])
     })
   }
 
+  //keeping the old method
   // startNote() {
   //   //issue: after pressing play it will delay 1 BPM before start playing
   //   const noteTiming = this.getNoteTimeArray(this.timeDivision)
@@ -67,6 +74,7 @@ export default class Note {
 
   stopNote() {
     clearInterval(this.intervalID)
+    clearTimeout(this.timeoutId)
   }
 
   getNoteTimeArray(timeDivision) {
@@ -90,6 +98,8 @@ export default class Note {
 
   playSound() {
     const audio = new Audio("sounds/click1.wav")
-    audio.play()
+    audio.currentTime = 0
+    audio.volume = 0.1
+    // audio.play()
   }
 }
