@@ -9,58 +9,83 @@
     <title>Beat</title>
   </head>
   <body>
-    <h1>BEATRAMID</h1>
-    <h3>
-      BPM:<span id="BPM-display"></span>
-      <input type="range" placeholder="70" min="1" max="300" value="70" id="BPM-input" data-BPM="" />
-    </h3>
-    <div class="beat-container">
-      <div id="quarter-row" class="beat-row">
-        <div class="beat-ctrl quarter" data-appearance="idle" data-status="active"></div>
-      </div>
-      <div id="eighth-row" class="beat-row">
-        <div class="beat-ctrl eighth" data-status="active"></div>
-        <div class="beat-ctrl eighth" data-status="active"></div>
-      </div>
-      <div id="tuplet-row" class="beat-row">
-        <div class="beat-ctrl tuplet" data-status="active"></div>
-        <div class="beat-ctrl tuplet" data-status="active"></div>
-        <div class="beat-ctrl tuplet" data-status="active"></div>
-      </div>
-      <div id="sixteenth-row" class="beat-row">
-        <div class="beat-ctrl sixteenth" data-status="active"></div>
-        <div class="beat-ctrl sixteenth" data-status="active"></div>
-        <div class="beat-ctrl sixteenth" data-status="active"></div>
-        <div class="beat-ctrl sixteenth" data-status="active"></div>
-      </div>
-      <div id="quintuplet-row" class="beat-row">
-        <div class="beat-ctrl quintuplet" data-status="active"></div>
-        <div class="beat-ctrl quintuplet" data-status="active"></div>
-        <div class="beat-ctrl quintuplet" data-status="active"></div>
-        <div class="beat-ctrl quintuplet" data-status="active"></div>
-        <div class="beat-ctrl quintuplet" data-status="active"></div>
-      </div>
-      <div id="sextuplet-row" class="beat-row">
-        <div class="beat-ctrl sextuplet" data-status="active"></div>
-        <div class="beat-ctrl sextuplet" data-status="active"></div>
-        <div class="beat-ctrl sextuplet" data-status="active"></div>
-        <div class="beat-ctrl sextuplet" data-status="active"></div>
-        <div class="beat-ctrl sextuplet" data-status="active"></div>
-        <div class="beat-ctrl sextuplet" data-status="active"></div>
-      </div>
-      <div id="septuplet-row" class="beat-row">
-        <div class="beat-ctrl septuplet" data-status="active"></div>
-        <div class="beat-ctrl septuplet" data-status="active"></div>
-        <div class="beat-ctrl septuplet" data-status="active"></div>
-        <div class="beat-ctrl septuplet" data-status="active"></div>
-        <div class="beat-ctrl septuplet" data-status="active"></div>
-        <div class="beat-ctrl septuplet" data-status="active"></div>
-        <div class="beat-ctrl septuplet" data-status="active"></div>
+    <div class="wrapper">
+      <div id="app-container" class="app-container" data-status="idle">
+        <h1 class="title-text">BEATRAMID</h1>
+        <p class="bpm-display"><span class="bpm-number" id="bpm-display"></span> bpm</p>
+        <div class="beat-container">
+          <div id="quarter-row" class="beat-row">
+            <span class="beat-ctrl quarter" data-appearance="idle" data-status="active"></span>
+          </div>
+          <div id="eighth-row" class="beat-row">
+            <div class="beat-ctrl eighth" data-status="active"></div>
+            <div class="beat-ctrl eighth" data-status="active"></div>
+          </div>
+          <div id="tuplet-row" class="beat-row">
+            <div class="beat-ctrl tuplet" data-status="active"></div>
+            <div class="beat-ctrl tuplet" data-status="active"></div>
+            <div class="beat-ctrl tuplet" data-status="active"></div>
+          </div>
+          <div id="sixteenth-row" class="beat-row">
+            <div class="beat-ctrl sixteenth" data-status="active"></div>
+            <div class="beat-ctrl sixteenth" data-status="active"></div>
+            <div class="beat-ctrl sixteenth" data-status="active"></div>
+            <div class="beat-ctrl sixteenth" data-status="active"></div>
+          </div>
+          <div id="quintuplet-row" class="beat-row">
+            <div class="beat-ctrl quintuplet" data-status="active"></div>
+            <div class="beat-ctrl quintuplet" data-status="active"></div>
+            <div class="beat-ctrl quintuplet" data-status="active"></div>
+            <div class="beat-ctrl quintuplet" data-status="active"></div>
+            <div class="beat-ctrl quintuplet" data-status="active"></div>
+          </div>
+          <div id="sextuplet-row" class="beat-row">
+            <div class="beat-ctrl sextuplet" data-status="active"></div>
+            <div class="beat-ctrl sextuplet" data-status="active"></div>
+            <div class="beat-ctrl sextuplet" data-status="active"></div>
+            <div class="beat-ctrl sextuplet" data-status="active"></div>
+            <div class="beat-ctrl sextuplet" data-status="active"></div>
+            <div class="beat-ctrl sextuplet" data-status="active"></div>
+          </div>
+        </div>
+        <div id="tap" class="tap-area" data-status="idle"></div>
+
+        <input type="range" placeholder="70" min="20" max="280" value="70" id="bpm-input" data-BPM="" />
+
+        <button class="play-pause-btn" id="play-pause-btn" data-status="pause">
+          <svg
+            id="pause-svg"
+            class="pause-svg hide"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="currentColor"
+            class="bi bi-pause"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"
+            />
+          </svg>
+          <svg
+            id="play-svg"
+            class="play-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="currentColor"
+            class="bi bi-play"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"
+            />
+          </svg>
+        </button>
       </div>
     </div>
-    <div id="tap" class="tap-area"></div>
-    <div class="play-button">
-      <button id="play-button" data-state="play">play</button>
-    </div>
+    <template>
+      <div class="beat-ctrl septuplet" data-status="active"></div>
+    </template>
   </body>
 </html>
