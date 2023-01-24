@@ -1,4 +1,4 @@
-import Note from "./Note.js"
+import rail from "./rail.js"
 import tap from "./tap.js"
 import Timer from "./Timer.js"
 
@@ -11,14 +11,6 @@ let bpm = 60
 let trackIntervals = createTrackIntervals(bpm)
 const track = createTrackTimer()
 bpmDisplayElement.textContent = bpm
-
-// create notes
-const quarterNote = new Note().createNote("quarter")
-const eighthNote = new Note().createNote("eighth")
-const tupletNote = new Note().createNote("tuplet")
-const sixteenthNote = new Note().createNote("sixteenth", "mute")
-const quintupletNote = new Note().createNote("quintuplet", "mute")
-const sextuplet = new Note().createNote("sextuplet", "mute")
 
 bpmInputElement.addEventListener("input", (event) => {
   const value = event.target.value
@@ -76,60 +68,10 @@ function createTrackIntervals(bpm) {
   ].slice(0, trackIntervals.length)
 }
 
-const activateTrack = {
-  0() {
-    quarterNote.activate({ restart: true, sound: "click2" })
-    tupletNote.activate({ restart: true, sound: "click2" })
-    eighthNote.activate({ restart: true, sound: "click3" })
-    sixteenthNote.activate({ restart: true, sound: "click2" })
-    quintupletNote.activate({ restart: true, sound: "click2" })
-    sextuplet.activate({ restart: true, sound: "click2" })
-  },
-  1() {},
-  2() {
-    sextuplet.activate()
-  },
-  3() {
-    quintupletNote.activate()
-  },
-  4() {
-    sixteenthNote.activate()
-  },
-  5() {
-    tupletNote.activate()
-    sextuplet.activate()
-  },
-  6() {
-    quintupletNote.activate()
-  },
-  7() {
-    eighthNote.activate()
-    sixteenthNote.activate()
-    sextuplet.activate()
-  },
-  8() {
-    quintupletNote.activate()
-  },
-  9() {
-    tupletNote.activate()
-    sextuplet.activate()
-  },
-  10() {
-    sixteenthNote.activate()
-  },
-  11() {
-    quintupletNote.activate()
-  },
-  12() {
-    sextuplet.activate()
-  },
-  13() {},
-}
-
 function createTrackTimer() {
   return new Timer(
     () => {
-      activateTrack[track.index]()
+      rail[track.index]()
     },
     trackIntervals,
     { showDrift: false, immediate: false }
@@ -159,7 +101,8 @@ function toggleTrackPlayPause() {
 }
 
 function toggleBtnStatus() {
-  playPauseBtnElement.dataset.status = playPauseBtnElement.dataset.status === "pause" ? "play" : "pause"
+  playPauseBtnElement.dataset.status =
+    playPauseBtnElement.dataset.status === "pause" ? "play" : "pause"
   playPauseBtnElement.querySelector("#pause-svg").classList.toggle("hide")
   playPauseBtnElement.querySelector("#play-svg").classList.toggle("hide")
 }

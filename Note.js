@@ -65,7 +65,8 @@ export default class Note {
 
   incrementIndex() {
     const elementQuantity = this.elements.length
-    this.elementIndex = this.elementIndex === elementQuantity - 1 ? 0 : this.elementIndex + 1
+    this.elementIndex =
+      this.elementIndex === elementQuantity - 1 ? 0 : this.elementIndex + 1
   }
 
   mute({ target }) {
