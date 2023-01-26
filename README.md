@@ -18,8 +18,8 @@ The goal of Beatramid is to provide an easy-to-use visualization of commonly use
 
 ### **Usage and Requirements**
 
-Open with VScode and Live Server extension
-Or open with GitHub Pages(https://pakkerman.github.io/Beatramid/)
+- Open with VScode and Live Server extension
+- Or open with GitHub Pages(https://pakkerman.github.io/Beatramid/)
 
 #
 
