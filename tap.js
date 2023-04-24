@@ -15,7 +15,6 @@ export default function tap() {
   const tapTime = Date.now()
   const diff = calculateDiff(tapTime)
   const avg = getAvg(diff)
-  // console.log(avg)
 
   const BPM = parseInt((1000 / avg) * 60)
   return BPM
@@ -45,9 +44,7 @@ function clearTapSession() {
   timeout = setTimeout(() => {
     tapTimeStamps = []
     avg = []
-    console.log("Tap area reset")
+    console.log('Tap area reset')
     isActive = false
   }, 3000)
 }
-
-
