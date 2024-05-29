@@ -1,4 +1,4 @@
-# **Beatramid**
+**Beatramid**
 
 ## **Description:**
 
@@ -112,3 +112,18 @@ Wang Paike
 This project is for Harvard CS50x 2023 course.
 
 #
+
+## Code Summary [![](https://tokei.rs/b1/github/XAMPPRocky/tokei)](https://github.com/XAMPPRocky/tokei).
+
+```
+===============================================================================
+ Language            Files        Lines         Code     Comments       Blanks
+===============================================================================
+ CSS                     1          214          179            4           31
+ HTML                    1           91           89            0            2
+ JavaScript              5          400          323           23           54
+ Markdown                1          114            0           67           47
+===============================================================================
+ Total                   8          819          591           94          134
+===============================================================================
+```
